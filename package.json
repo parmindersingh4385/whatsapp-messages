@@ -16,5 +16,8 @@
 	"bugs": {
 		"url": "https://github.com/parmindersingh4385/whatsapp-messages/issues"
 	},
-	"homepage": "https://github.com/parmindersingh4385/whatsapp-messages#readme"
+	"homepage": "https://github.com/parmindersingh4385/whatsapp-messages#readme",
+	"dependencies": {
+		"express": "^4.18.2"
+	}
 }
