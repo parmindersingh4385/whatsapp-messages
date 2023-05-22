@@ -46,36 +46,37 @@ mongoose
 		// 	qrcode.generate(qr, { small: true });
 		// });
 
-		// client.on('ready', () => {
-		// 	console.log('Client is ready!');
-		// 	schedule.scheduleJob('*/1 * * * *', function () {
-		// 		console.log('schedule.........................');
-		// 		client.getChats().then(function (chats) {
-		// 			const chatGroup = chats.find(
-		// 				(chat) => chat.name == 'GirlsFab'
-		// 			);
-		// 			console.log(chatGroup.id._serialized);
-		// 			client.sendMessage(
-		// 				chatGroup.id._serialized,
-		// 				'Number is ' + Math.floor(Math.random() * 10)
-		// 			);
-		// 			//sendImage(chatGroup);
-		// 		});
-		// 	});
-		// 	// cron.schedule('*/59 * * * * *', function () {
-		// 	// 	client.getChats().then(function (chats) {
-		// 	// 		const chatGroup = chats.find(
-		// 	// 			(chat) => chat.name == 'GirlsFab'
-		// 	// 		);
-		// 	// 		//console.log(chatGroup);
-		// 	// 		// client.sendMessage(
-		// 	// 		// 	chatGroup.id._serialized,
-		// 	// 		// 	'Number is ' + Math.floor(Math.random() * 10)
-		// 	// 		// );
-		// 	// 		sendImage(chatGroup);
-		// 	// 	});
-		// 	// });
-		// });
+		client.on('ready', () => {
+			//console.log('Client is ready!');
+			msg = 'Client is ready!';
+			// schedule.scheduleJob('*/1 * * * *', function () {
+			// 	console.log('schedule.........................');
+			// 	client.getChats().then(function (chats) {
+			// 		const chatGroup = chats.find(
+			// 			(chat) => chat.name == 'GirlsFab'
+			// 		);
+			// 		console.log(chatGroup.id._serialized);
+			// 		client.sendMessage(
+			// 			chatGroup.id._serialized,
+			// 			'Number is ' + Math.floor(Math.random() * 10)
+			// 		);
+			// 		//sendImage(chatGroup);
+			// 	});
+			// });
+			// cron.schedule('*/59 * * * * *', function () {
+			// 	client.getChats().then(function (chats) {
+			// 		const chatGroup = chats.find(
+			// 			(chat) => chat.name == 'GirlsFab'
+			// 		);
+			// 		//console.log(chatGroup);
+			// 		// client.sendMessage(
+			// 		// 	chatGroup.id._serialized,
+			// 		// 	'Number is ' + Math.floor(Math.random() * 10)
+			// 		// );
+			// 		sendImage(chatGroup);
+			// 	});
+			// });
+		});
 
 		// async function sendImage(chatGroup) {
 		// 	console.log('sendImage....................');
