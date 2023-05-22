@@ -92,7 +92,7 @@ mongoose
 		// 	console.log('remote_session_saved....................1234567890');
 		// });
 
-		// client.initialize();
+		client.initialize();
 	});
 
 app.listen(port, '0.0.0.0', function () {
