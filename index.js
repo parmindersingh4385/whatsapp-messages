@@ -10,10 +10,12 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
+let msg = 'WhatsApp message sent successfully.............999';
+
 app.get('/', function (req, res) {
 	res.send({
 		success: true,
-		message: 'WhatsApp message sent successfully.............888'
+		message: msg //'WhatsApp message sent successfully.............888'
 	});
 });
 
@@ -29,13 +31,14 @@ mongoose
 	)
 	.then(() => {
 		console.log('CONNECT.........................');
-		// const store = new MongoStore({ mongoose: mongoose });
-		// const client = new Client({
-		// 	authStrategy: new RemoteAuth({
-		// 		store: store,
-		// 		backupSyncIntervalMs: 300000
-		// 	})
-		// });
+		msg = 'CONNECT.........................';
+		/* const store = new MongoStore({ mongoose: mongoose });
+		const client = new Client({
+			authStrategy: new RemoteAuth({
+				store: store,
+				backupSyncIntervalMs: 300000
+			})
+		}); */
 
 		// client.on('qr', (qr) => {
 		// 	qrcode.generate(qr, { small: true });
