@@ -1,19 +1,20 @@
 {
-  "name": "whatsapp-messages",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/parmindersingh4385/whatsapp-messages.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/parmindersingh4385/whatsapp-messages/issues"
-  },
-  "homepage": "https://github.com/parmindersingh4385/whatsapp-messages#readme"
+	"name": "whatsapp-messages",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/parmindersingh4385/whatsapp-messages.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/parmindersingh4385/whatsapp-messages/issues"
+	},
+	"homepage": "https://github.com/parmindersingh4385/whatsapp-messages#readme"
 }
