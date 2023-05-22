@@ -1,0 +1,7 @@
+2023/05/22-14:42:19.940 33d4 Creating DB D:\NODE_JS_TUTORIALS\whatsapp-messages\.wwebjs_auth\RemoteAuth\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb since it was missing.
+2023/05/22-14:42:19.956 33d4 Reusing MANIFEST D:\NODE_JS_TUTORIALS\whatsapp-messages\.wwebjs_auth\RemoteAuth\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/05/22-14:42:20.237 33d4 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/05/22-14:42:23.481 1eb0 Level-0 table #5: started
+2023/05/22-14:42:23.489 1eb0 Level-0 table #5: 27493 bytes OK
+2023/05/22-14:42:23.492 1eb0 Delete type=0 #3
+2023/05/22-14:42:23.492 1eb0 Manual compaction at level-0 from '\x00\x06\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x07\x00\x00\x00' @ 0 : 0; will stop at (end)
