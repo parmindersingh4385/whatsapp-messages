@@ -30,15 +30,17 @@ mongoose
 		}
 	)
 	.then(() => {
-		console.log('CONNECT.........................');
-		msg = 'CONNECT.........................';
-		/* const store = new MongoStore({ mongoose: mongoose });
+		//console.log('CONNECT.........................');
+
+		const store = new MongoStore({ mongoose: mongoose });
 		const client = new Client({
 			authStrategy: new RemoteAuth({
 				store: store,
 				backupSyncIntervalMs: 300000
 			})
-		}); */
+		});
+
+		msg = 'CONNECT.........................CLIENT';
 
 		// client.on('qr', (qr) => {
 		// 	qrcode.generate(qr, { small: true });
