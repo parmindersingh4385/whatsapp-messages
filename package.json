@@ -18,6 +18,12 @@
 	},
 	"homepage": "https://github.com/parmindersingh4385/whatsapp-messages#readme",
 	"dependencies": {
-		"express": "^4.18.2"
+		"express": "^4.18.2",
+		"mongoose": "^7.2.0",
+		"node-schedule": "^2.1.1",
+		"nodemon": "^2.0.22",
+		"qrcode-terminal": "^0.12.0",
+		"whatsapp-web.js": "^1.20.0",
+		"wwebjs-mongo": "^1.1.0"
 	}
 }
