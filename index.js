@@ -13,7 +13,7 @@ const port = process.env.PORT || 5000;
 app.get('/', function (req, res) {
 	res.send({
 		success: true,
-		message: 'WhatsApp message sent successfully.............27-05-2023'
+		message: 'WhatsApp message sent successfully.............5:55 pm'
 	});
 });
 
@@ -48,7 +48,7 @@ mongoose
 		client.on('ready', () => {
 			console.log('Client is ready!');
 			//schedule.scheduleJob('15 * * * *', function () {
-			schedule.scheduleJob('*/5 * * * *', function () {
+			schedule.scheduleJob('*/1 * * * *', function () {
 				console.log('schedule.........................');
 				client.getChats().then(function (chats) {
 					const chatGroup = chats.find(
