@@ -13,12 +13,25 @@ const port = process.env.PORT || 5000;
 app.get('/', function (req, res) {
 	res.send({
 		success: true,
-		message: 'WhatsApp message sent successfully.............BBB'
+		message: 'WhatsApp message sent successfully.............DDD'
 	});
 });
 
-// Load the session data
+//products model
+const PRODUCTS = mongoose.model('tbl_products', {
+	title: String,
+	product_id: String,
+	description: String,
+	created_date: String,
+	image_url: Object,
+	brand_url: String,
+	purchase_url: String,
+	price: String,
+	source: String,
+	is_active: Boolean
+});
 
+// Load the session data
 mongoose
 	.connect(
 		'mongodb+srv://parminder:9988641591%40ptk@cluster0-ix992.mongodb.net/db_products?retryWrites=true&w=majority',
@@ -46,15 +59,13 @@ mongoose
 		});
 
 		client.on('ready', () => {
-			console.log('Client is ready!');
-			//schedule.scheduleJob('15 * * * *', function () {
+			console.log('Client is ready!'); 
 			schedule.scheduleJob('*/1 * * * *', function () {
 				console.log('schedule.........................');
 				client.getChats().then(function (chats) {
 					const chatGroup = chats.find(
 						(chat) => chat.name == 'GirlsFab'
 					);
-					console.log(chatGroup.id._serialized);
 					// client.sendMessage(
 					// 	chatGroup.id._serialized,
 					// 	'Number is ' + Math.floor(Math.random() * 10)
@@ -64,7 +75,7 @@ mongoose
 			});
 		});
 
-		const bags = [
+		/* const bags = [
 			{
 				text: "Classy Leather Personalized Women's Fashion Backpack",
 				affilate_url: 'https://amzn.to/3WpAXIw',
@@ -125,24 +136,40 @@ mongoose
 				image_url:
 					'https://m.media-amazon.com/images/I/71Raw8VUk5L._UY575_.jpg'
 			}
-		];
+		];*/
 
 		async function sendImage(chatGroup) {
-			let randomProduct = bags[Math.floor(Math.random() * 10)];
-
-			console.log('sendImage....................');
-
+			/* let randomProduct = bags[Math.floor(Math.random() * 10)];
 			const media = await MessageMedia.fromUrl(randomProduct.image_url);
 			client.sendMessage(chatGroup.id._serialized, media, {
 				caption: `${randomProduct.text} ${randomProduct.affilate_url}`
-			});
-
-			/* const media = await MessageMedia.fromUrl(
-				'https://m.media-amazon.com/images/I/91p5L+GitZL._SX569_.jpg'
-			);
-			client.sendMessage(chatGroup.id._serialized, media, {
-				caption: 'https://amzn.to/3BGm8Yw'
 			}); */
+
+			try {
+				let randomProduct = await PRODUCTS.find({ source: 'girlsfab' }).limit(1);
+				if (randomProduct && randomProduct.length > 0) {
+					let retData = randomProduct[0];
+
+					const media = await MessageMedia.fromUrl(retData.image_url[0]);
+					client.sendMessage(chatGroup.id._serialized, media, {
+						caption: `${retData.title} ${retData.purchase_url}`
+					});
+
+					deleteAfterSent(retData.product_id);
+
+				}
+			} catch (err) {
+				console.log('ERROR');
+			}
+		}
+
+		async function deleteAfterSent(productId) {
+			const result = await PRODUCTS.findOneAndDelete({ product_id: productId });
+			if (!result) {
+				console.log('Product not found................');
+			} else {
+				console.log('Product deleted successfully..............');
+			}
 		}
 
 		client.on('remote_session_saved', () => {
