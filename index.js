@@ -48,20 +48,20 @@ mongoose
 		client.on('ready', () => {
 			console.log('Client is ready!');
 			//schedule.scheduleJob('15 * * * *', function () {
-			/* schedule.scheduleJob('*/1 * * * *', function () {
-				console.log('schedule.........................');
-				client.getChats().then(function (chats) {
-					const chatGroup = chats.find(
-						(chat) => chat.name == 'GirlsFab'
-					);
-					console.log(chatGroup.id._serialized);
-					// client.sendMessage(
-					// 	chatGroup.id._serialized,
-					// 	'Number is ' + Math.floor(Math.random() * 10)
-					// );
-					sendImage(chatGroup);
-				});
-			}); */
+			// schedule.scheduleJob('*/1 * * * *', function () {
+			// 	console.log('schedule.........................');
+			// 	client.getChats().then(function (chats) {
+			// 		const chatGroup = chats.find(
+			// 			(chat) => chat.name == 'GirlsFab'
+			// 		);
+			// 		console.log(chatGroup.id._serialized);
+			// 		// client.sendMessage(
+			// 		// 	chatGroup.id._serialized,
+			// 		// 	'Number is ' + Math.floor(Math.random() * 10)
+			// 		// );
+			// 		sendImage(chatGroup);
+			// 	});
+			// });
 		});
 
 		const bags = [
