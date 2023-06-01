@@ -13,7 +13,7 @@ const port = process.env.PORT || 5000;
 app.get('/', function (req, res) {
 	res.send({
 		success: true,
-		message: 'App working fine........................1 PM'
+		message: 'App working fine........................6 PM'
 	});
 });
 
@@ -61,6 +61,7 @@ mongoose
 		client.on('ready', () => { 
 			scheduleJobForGf();
 			scheduleJobForAd();
+			scheduleJobForFd();
 		}); 
 
 		function scheduleJobForGf(){ 
@@ -80,6 +81,21 @@ mongoose
 		function scheduleJobForAd(){
 			schedule.scheduleJob('*/2 * * * *', function () {
 				const groupName = 'Amazon deals';
+
+				client.getChats().then(function (chats) {
+					const chatGroup = chats.find(
+						(chat) => chat.name == groupName
+					);
+					if(chatGroup){
+						sendImage(chatGroup, groupName);
+					}
+				}); 
+			});
+		}
+
+		function scheduleJobForFd(){
+			schedule.scheduleJob('*/3 * * * *', function () {
+				const groupName = 'Flipkart deals';
 
 				client.getChats().then(function (chats) {
 					const chatGroup = chats.find(
