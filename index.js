@@ -13,7 +13,7 @@ const port = process.env.PORT || 5000;
 app.get('/', function (req, res) {
 	res.send({
 		success: true,
-		message: 'App working fine........................11:37 AM'
+		message: 'App working fine........................12 PM'
 	});
 });
 
@@ -58,21 +58,39 @@ mongoose
 			qrcode.generate(qr, { small: true });
 		});
 
-		client.on('ready', () => {
-			schedule.scheduleJob('*/5 * * * *', function () {
-				console.log('schedule.........................');
-				client.getChats().then(function (chats) {
-					const chatGroup = chats.find(
-						(chat) => chat.name == 'GirlsFab'
-					);
-					sendImage(chatGroup);
-				});
-			});
+		client.on('ready', () => { 
+			scheduleJobForGf();
+			scheduleJobForAd();
 		}); 
 
-		async function sendImage(chatGroup) {
+		function scheduleJobForGf(){
+			schedule.scheduleJob('*/5 * * * *', function () {
+				console.log('schedule job for gf.........................');
+				const groupName = 'GirlsFab';
+				const chatGroup = chats.find(
+					(chat) => chat.name == groupName
+				);
+				if(chatGroup){
+					sendImage(chatGroup, groupName);
+				}
+			});
+		}
+		function scheduleJobForAd(){
+			schedule.scheduleJob('*/10 * * * *', function () {
+				console.log('schedule job for Ad.........................'); 
+				const groupName = 'Amazon deals';
+				const chatGroup = chats.find(
+					(chat) => chat.name == groupName
+				);
+				if(chatGroup){
+					sendImage(chatGroup, groupName);
+				}
+			});
+		}
+
+		async function sendImage(chatGroup, groupName) {
 			try {
-				let randomProduct = await PRODUCTS.find({ source: 'girlsfab' }).limit(1);
+				let randomProduct = await PRODUCTS.find({ source: groupName }).limit(1);
 				if (randomProduct && randomProduct.length > 0) {
 					let retData = randomProduct[0];
 
