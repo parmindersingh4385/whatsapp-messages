@@ -13,7 +13,7 @@ const port = process.env.PORT || 5000;
 app.get('/', function (req, res) {
 	res.send({
 		success: true,
-		message: 'App working fine........................12 PM'
+		message: 'App working fine........................12:35 PM'
 	});
 });
 
@@ -59,32 +59,41 @@ mongoose
 		});
 
 		client.on('ready', () => { 
+			console.log('READY...............');
 			scheduleJobForGf();
 			scheduleJobForAd();
 		}); 
 
-		function scheduleJobForGf(){
-			schedule.scheduleJob('*/5 * * * *', function () {
+		function scheduleJobForGf(){ 
+			console.log('scheduleJobForGf................');
+			schedule.scheduleJob('*/1 * * * *', function () {
 				console.log('schedule job for gf.........................');
 				const groupName = 'GirlsFab';
-				const chatGroup = chats.find(
-					(chat) => chat.name == groupName
-				);
-				if(chatGroup){
-					sendImage(chatGroup, groupName);
-				}
+
+				client.getChats().then(function (chats) {
+					const chatGroup = chats.find(
+						(chat) => chat.name == groupName
+					);
+					if(chatGroup){
+						sendImage(chatGroup, groupName);
+					}
+				}); 
 			});
 		}
 		function scheduleJobForAd(){
-			schedule.scheduleJob('*/10 * * * *', function () {
+			console.log('scheduleJobForAd................');
+			schedule.scheduleJob('*/2 * * * *', function () {
 				console.log('schedule job for Ad.........................'); 
 				const groupName = 'Amazon deals';
-				const chatGroup = chats.find(
-					(chat) => chat.name == groupName
-				);
-				if(chatGroup){
-					sendImage(chatGroup, groupName);
-				}
+
+				client.getChats().then(function (chats) {
+					const chatGroup = chats.find(
+						(chat) => chat.name == groupName
+					);
+					if(chatGroup){
+						sendImage(chatGroup, groupName);
+					}
+				}); 
 			});
 		}
 
