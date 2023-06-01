@@ -13,7 +13,7 @@ const port = process.env.PORT || 5000;
 app.get('/', function (req, res) {
 	res.send({
 		success: true,
-		message: 'App working fine........................12:35 PM'
+		message: 'App working fine........................1 PM'
 	});
 });
 
@@ -41,7 +41,7 @@ mongoose
 		}
 	)
 	.then(() => {
-		console.log('CONNECT.........................');
+		//console.log('CONNECT.........................');
 		const store = new MongoStore({ mongoose: mongoose });
 		const client = new Client({
 			authStrategy: new RemoteAuth({
@@ -59,15 +59,12 @@ mongoose
 		});
 
 		client.on('ready', () => { 
-			console.log('READY...............');
 			scheduleJobForGf();
 			scheduleJobForAd();
 		}); 
 
 		function scheduleJobForGf(){ 
-			console.log('scheduleJobForGf................');
 			schedule.scheduleJob('*/1 * * * *', function () {
-				console.log('schedule job for gf.........................');
 				const groupName = 'GirlsFab';
 
 				client.getChats().then(function (chats) {
@@ -81,9 +78,7 @@ mongoose
 			});
 		}
 		function scheduleJobForAd(){
-			console.log('scheduleJobForAd................');
 			schedule.scheduleJob('*/2 * * * *', function () {
-				console.log('schedule job for Ad.........................'); 
 				const groupName = 'Amazon deals';
 
 				client.getChats().then(function (chats) {
@@ -99,7 +94,7 @@ mongoose
 
 		async function sendImage(chatGroup, groupName) {
 			try {
-				let randomProduct = await PRODUCTS.find({ source: groupName }).limit(1);
+				let randomProduct = await PRODUCTS.find({ source: groupName.toLowerCase() }).limit(1);
 				if (randomProduct && randomProduct.length > 0) {
 					let retData = randomProduct[0];
 
@@ -112,16 +107,15 @@ mongoose
 
 				}
 			} catch (err) {
-				console.log('ERROR');
 			}
 		}
 
 		async function deleteAfterSent(productId) {
 			const result = await PRODUCTS.findOneAndDelete({ product_id: productId });
 			if (!result) {
-				console.log('Product not found................');
+				//console.log('Product not found................');
 			} else {
-				console.log('Product deleted successfully..............');
+				//console.log('Product deleted successfully..............');
 			}
 		}
 

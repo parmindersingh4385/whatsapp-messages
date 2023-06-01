@@ -1,3 +1,10 @@
-2023/06/01-06:10:05.169 31 Reusing MANIFEST /app/.wwebjs_auth/RemoteAuth/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/06/01-06:10:05.169 31 Recovering log #38
-2023/06/01-06:10:05.186 31 Reusing old log /app/.wwebjs_auth/RemoteAuth/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000038.log 
+2023/06/01-12:41:47.591 1b50 Creating DB H:\xampp\New folder\whatsapp-messages\.wwebjs_auth\RemoteAuth\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb since it was missing.
+2023/06/01-12:41:47.598 1b50 Reusing MANIFEST H:\xampp\New folder\whatsapp-messages\.wwebjs_auth\RemoteAuth\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/06/01-12:41:47.645 1b50 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/06/01-12:41:48.147 450 Level-0 table #5: started
+2023/06/01-12:41:48.155 450 Level-0 table #5: 21553 bytes OK
+2023/06/01-12:41:48.162 450 Delete type=0 #3
+2023/06/01-12:41:48.177 450 Manual compaction at level-0 from '\x00\x06\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x07\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/06/01-12:42:38.744 450 Level-0 table #7: started
+2023/06/01-12:42:38.786 450 Level-0 table #7: 1202477 bytes OK
+2023/06/01-12:42:38.789 450 Delete type=0 #4
