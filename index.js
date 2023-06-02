@@ -5,6 +5,8 @@ const schedule = require('node-schedule');
 // Require database
 const { MongoStore } = require('wwebjs-mongo');
 const mongoose = require('mongoose');
+//telegram package
+const telegram = require('telegram-bot-api');
 
 const app = express();
 
@@ -13,7 +15,7 @@ const port = process.env.PORT || 5000;
 app.get('/', function (req, res) {
 	res.send({
 		success: true,
-		message: 'App working fine........................6 PM...........123'
+		message: 'App working fine........................11 AM'
 	});
 });
 
@@ -92,7 +94,6 @@ mongoose
 				}); 
 			});
 		}
-
 		function scheduleJobForFd(){
 			schedule.scheduleJob('*/3 * * * *', function () {
 				const groupName = 'Flipkart deals';
@@ -119,7 +120,27 @@ mongoose
 						caption: `${retData.title} ${retData.purchase_url}`
 					});
 
-					deleteAfterSent(retData.product_id);
+					//deleteAfterSent(retData.product_id);
+					if(groupName == 'GirlsFab'){
+						var api = new telegram({
+							token: '6158204123:AAGoADPhxzS8wQGO8DeLWwZr6g8gpoQbSLo',
+							async_requests: true,
+							updates: {
+								enabled: true,
+								get_interval: 1000
+							}
+						});
+			
+						api.sendPhoto({
+							chat_id: '@' + groupName//'@GirlsFab',
+							caption: `${retData.title} ${retData.purchase_url}`,
+							photo: retData.image_url[0]
+						}).then(function (data) {
+							deleteAfterSent(retData.product_id);
+						});
+					}else{
+						deleteAfterSent(retData.product_id);
+					}
 
 				}
 			} catch (err) {
