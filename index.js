@@ -132,7 +132,7 @@ mongoose
 						});
 			
 						api.sendPhoto({
-							chat_id: '@' + groupName//'@GirlsFab',
+							chat_id: '@' + groupName,//'@GirlsFab',
 							caption: `${retData.title} ${retData.purchase_url}`,
 							photo: retData.image_url[0]
 						}).then(function (data) {

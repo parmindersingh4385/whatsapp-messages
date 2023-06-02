@@ -1,10 +1,39 @@
-2023/06/01-12:41:47.591 1b50 Creating DB H:\xampp\New folder\whatsapp-messages\.wwebjs_auth\RemoteAuth\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb since it was missing.
-2023/06/01-12:41:47.598 1b50 Reusing MANIFEST H:\xampp\New folder\whatsapp-messages\.wwebjs_auth\RemoteAuth\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/06/01-12:41:47.645 1b50 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)
-2023/06/01-12:41:48.147 450 Level-0 table #5: started
-2023/06/01-12:41:48.155 450 Level-0 table #5: 21553 bytes OK
-2023/06/01-12:41:48.162 450 Delete type=0 #3
-2023/06/01-12:41:48.177 450 Manual compaction at level-0 from '\x00\x06\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x07\x00\x00\x00' @ 0 : 0; will stop at (end)
-2023/06/01-12:42:38.744 450 Level-0 table #7: started
-2023/06/01-12:42:38.786 450 Level-0 table #7: 1202477 bytes OK
-2023/06/01-12:42:38.789 450 Delete type=0 #4
+2023/06/01-12:41:01.111 83 Reusing MANIFEST /app/.wwebjs_auth/RemoteAuth/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/06/01-12:41:01.112 83 Recovering log #16
+2023/06/01-12:41:01.115 83 Reusing old log /app/.wwebjs_auth/RemoteAuth/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000016.log 
+2023/06/01-13:18:00.889 11c Level-0 table #21: started
+2023/06/01-13:18:00.934 11c Level-0 table #21: 1812967 bytes OK
+2023/06/01-13:18:00.939 11c Delete type=0 #16
+2023/06/01-13:18:01.114 11c Compacting 1@1 + 1@2 files
+2023/06/01-13:18:01.192 11c Generated table #22@1: 34142 keys, 1284667 bytes
+2023/06/01-13:18:01.192 11c Compacted 1@1 + 1@2 files => 1284667 bytes
+2023/06/01-13:18:01.217 11c compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/06/01-13:18:01.217 11c Delete type=2 #21
+2023/06/01-13:18:01.217 11c Delete type=2 #18
+2023/06/01-14:03:01.097 292 Level-0 table #24: started
+2023/06/01-14:03:01.157 292 Level-0 table #24: 2179030 bytes OK
+2023/06/01-14:03:01.177 292 Delete type=0 #20
+2023/06/01-14:03:04.213 289 Compacting 1@1 + 1@2 files
+2023/06/01-14:03:04.297 289 Generated table #25@1: 38055 keys, 1520003 bytes
+2023/06/01-14:03:04.297 289 Compacted 1@1 + 1@2 files => 1520003 bytes
+2023/06/01-14:03:04.300 289 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/06/01-14:03:04.300 289 Delete type=2 #22
+2023/06/01-14:03:04.300 289 Delete type=2 #24
+2023/06/01-15:03:39.812 429 Level-0 table #27: started
+2023/06/01-15:03:39.897 429 Level-0 table #27: 2262927 bytes OK
+2023/06/01-15:03:39.901 429 Delete type=0 #23
+2023/06/01-15:03:40.145 41f Compacting 1@1 + 1@2 files
+2023/06/01-15:03:40.237 41f Generated table #28@1: 42659 keys, 1791956 bytes
+2023/06/01-15:03:40.237 41f Compacted 1@1 + 1@2 files => 1791956 bytes
+2023/06/01-15:03:40.241 41f compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/06/01-15:03:40.241 41f Delete type=2 #25
+2023/06/01-15:03:40.241 41f Delete type=2 #27
+2023/06/01-15:45:04.210 549 Level-0 table #30: started
+2023/06/01-15:45:04.284 549 Level-0 table #30: 1958142 bytes OK
+2023/06/01-15:45:04.305 549 Delete type=0 #26
+2023/06/01-15:48:01.343 56a Compacting 1@1 + 1@2 files
+2023/06/01-15:48:01.443 56a Generated table #31@1: 46887 keys, 1650197 bytes
+2023/06/01-15:48:01.443 56a Compacted 1@1 + 1@2 files => 1650197 bytes
+2023/06/01-15:48:01.446 56a compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/06/01-15:48:01.446 56a Delete type=2 #28
+2023/06/01-15:48:01.446 56a Delete type=2 #30
