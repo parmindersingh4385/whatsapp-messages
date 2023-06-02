@@ -15,7 +15,7 @@ const port = process.env.PORT || 5000;
 app.get('/', function (req, res) {
 	res.send({
 		success: true,
-		message: 'App working fine........................12 AM'
+		message: 'App working fine........................6 PM'
 	});
 });
 
