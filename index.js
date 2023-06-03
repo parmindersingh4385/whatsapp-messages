@@ -15,7 +15,7 @@ const port = process.env.PORT || 5000;
 app.get('/', function (req, res) {
 	res.send({
 		success: true,
-		message: 'App working fine........................7:21 PM'
+		message: 'App working fine........................8 PM'
 	});
 });
 
@@ -120,30 +120,32 @@ mongoose
 					const media = await MessageMedia.fromUrl(
 						retData.image_url[0]
 					);
-					client.sendMessage(chatGroup.id._serialized, media, {
-						caption: `${retData.title} ${retData.purchase_url}`
-					});
-
-					//deleteAfterSent(retData.product_id);
-					if (groupName == 'GirlsFab') {
-						var api = new telegram({
-							token: '6158204123:AAGoADPhxzS8wQGO8DeLWwZr6g8gpoQbSLo',
-							async_requests: true,
-							updates: {
-								enabled: true,
-								get_interval: 1000
-							}
+					if (chatGroup.id) {
+						client.sendMessage(chatGroup.id._serialized, media, {
+							caption: `${retData.title} ${retData.purchase_url}`
 						});
 
-						api.sendPhoto({
-							chat_id: '@' + groupName, //'@GirlsFab',
-							caption: `${retData.title} ${retData.purchase_url}`,
-							photo: retData.image_url[0]
-						}).then(function (data) {
+						//deleteAfterSent(retData.product_id);
+						if (groupName == 'GirlsFab') {
+							var api = new telegram({
+								token: '6158204123:AAGoADPhxzS8wQGO8DeLWwZr6g8gpoQbSLo',
+								async_requests: true,
+								updates: {
+									enabled: true,
+									get_interval: 1000
+								}
+							});
+
+							api.sendPhoto({
+								chat_id: '@' + groupName, //'@GirlsFab',
+								caption: `${retData.title} ${retData.purchase_url}`,
+								photo: retData.image_url[0]
+							}).then(function (data) {
+								deleteAfterSent(retData.product_id);
+							});
+						} else {
 							deleteAfterSent(retData.product_id);
-						});
-					} else {
-						deleteAfterSent(retData.product_id);
+						}
 					}
 				}
 			} catch (err) {}
