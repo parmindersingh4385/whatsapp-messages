@@ -15,7 +15,7 @@ const port = process.env.PORT || 5000;
 app.get('/', function (req, res) {
 	res.send({
 		success: true,
-		message: 'App working fine........................6 PM'
+		message: 'App working fine........................7 PM'
 	});
 });
 
@@ -60,13 +60,13 @@ mongoose
 			qrcode.generate(qr, { small: true });
 		});
 
-		client.on('ready', () => { 
+		client.on('ready', () => {
 			scheduleJobForGf();
 			scheduleJobForAd();
 			scheduleJobForFd();
-		}); 
+		});
 
-		function scheduleJobForGf(){ 
+		function scheduleJobForGf() {
 			schedule.scheduleJob('*/1 * * * *', function () {
 				const groupName = 'GirlsFab';
 
@@ -74,13 +74,13 @@ mongoose
 					const chatGroup = chats.find(
 						(chat) => chat.name == groupName
 					);
-					if(chatGroup){
+					if (chatGroup) {
 						sendImage(chatGroup, groupName);
 					}
-				}); 
+				});
 			});
 		}
-		function scheduleJobForAd(){
+		function scheduleJobForAd() {
 			schedule.scheduleJob('*/2 * * * *', function () {
 				const groupName = 'Amazon deals';
 
@@ -88,13 +88,13 @@ mongoose
 					const chatGroup = chats.find(
 						(chat) => chat.name == groupName
 					);
-					if(chatGroup){
+					if (chatGroup) {
 						sendImage(chatGroup, groupName);
 					}
-				}); 
+				});
 			});
 		}
-		function scheduleJobForFd(){
+		function scheduleJobForFd() {
 			schedule.scheduleJob('*/3 * * * *', function () {
 				const groupName = 'Flipkart deals';
 
@@ -102,26 +102,30 @@ mongoose
 					const chatGroup = chats.find(
 						(chat) => chat.name == groupName
 					);
-					if(chatGroup){
+					if (chatGroup) {
 						sendImage(chatGroup, groupName);
 					}
-				}); 
+				});
 			});
 		}
 
 		async function sendImage(chatGroup, groupName) {
 			try {
-				let randomProduct = await PRODUCTS.find({ source: groupName.toLowerCase() }).limit(1);
+				let randomProduct = await PRODUCTS.find({
+					source: groupName.toLowerCase()
+				}).limit(1);
 				if (randomProduct && randomProduct.length > 0) {
 					let retData = randomProduct[0];
 
-					const media = await MessageMedia.fromUrl(retData.image_url[0]);
+					const media = await MessageMedia.fromUrl(
+						retData.image_url[0]
+					);
 					client.sendMessage(chatGroup.id._serialized, media, {
 						caption: `${retData.title} ${retData.purchase_url}`
 					});
 
 					//deleteAfterSent(retData.product_id);
-					if(groupName == 'GirlsFab'){
+					if (groupName == 'GirlsFab') {
 						var api = new telegram({
 							token: '6158204123:AAGoADPhxzS8wQGO8DeLWwZr6g8gpoQbSLo',
 							async_requests: true,
@@ -130,25 +134,25 @@ mongoose
 								get_interval: 1000
 							}
 						});
-			
+
 						api.sendPhoto({
-							chat_id: '@' + groupName,//'@GirlsFab',
+							chat_id: '@' + groupName, //'@GirlsFab',
 							caption: `${retData.title} ${retData.purchase_url}`,
 							photo: retData.image_url[0]
 						}).then(function (data) {
 							deleteAfterSent(retData.product_id);
 						});
-					}else{
+					} else {
 						deleteAfterSent(retData.product_id);
 					}
-
 				}
-			} catch (err) {
-			}
+			} catch (err) {}
 		}
 
 		async function deleteAfterSent(productId) {
-			const result = await PRODUCTS.findOneAndDelete({ product_id: productId });
+			const result = await PRODUCTS.findOneAndDelete({
+				product_id: productId
+			});
 			if (!result) {
 				//console.log('Product not found................');
 			} else {
