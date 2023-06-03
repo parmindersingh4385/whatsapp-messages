@@ -15,7 +15,7 @@ const port = process.env.PORT || 5000;
 app.get('/', function (req, res) {
 	res.send({
 		success: true,
-		message: 'App working fine........................8:08 PM'
+		message: 'App working fine........................8:17 PM'
 	});
 });
 
@@ -88,7 +88,7 @@ mongoose
 					const chatGroup = chats.find(
 						(chat) => chat.name == groupName
 					);
-					if (chatGroup) {
+					if (chatGroup && chatGroup.id && chatGroup.id._serialized) {
 						sendImage(chatGroup, groupName);
 					}
 				});
@@ -102,7 +102,7 @@ mongoose
 					const chatGroup = chats.find(
 						(chat) => chat.name == groupName
 					);
-					if (chatGroup) {
+					if (chatGroup && chatGroup.id && chatGroup.id._serialized) {
 						sendImage(chatGroup, groupName);
 					}
 				});
