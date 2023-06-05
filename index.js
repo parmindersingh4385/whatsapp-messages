@@ -15,7 +15,7 @@ const port = process.env.PORT || 5000;
 app.get('/', function (req, res) {
 	res.send({
 		success: true,
-		message: 'App working fine........................8:17 PM'
+		message: 'App working fine........................11 AM'
 	});
 });
 
@@ -43,7 +43,7 @@ mongoose
 		}
 	)
 	.then(() => {
-		//console.log('CONNECT.........................');
+		console.log('CONNECT.........................');
 		const store = new MongoStore({ mongoose: mongoose });
 		const client = new Client({
 			authStrategy: new RemoteAuth({
@@ -61,20 +61,23 @@ mongoose
 		});
 
 		client.on('ready', () => {
+			console.log('ready.....................');
 			scheduleJobForGf();
 			scheduleJobForAd();
 			scheduleJobForFd();
 		});
 
 		function scheduleJobForGf() {
+			console.log('scheduleJobForGf...............');
 			schedule.scheduleJob('*/1 * * * *', function () {
 				const groupName = 'GirlsFab';
 
 				client.getChats().then(function (chats) {
 					const chatGroup = chats.find(
 						(chat) => chat.name == groupName
-					);
-					if (chatGroup && chatGroup.id && chatGroup.id._serialized) {
+					); 
+
+					if (chatGroup && chatGroup.groupMetadata && chatGroup.groupMetadata.id && chatGroup.groupMetadata.id._serialized) {
 						sendImage(chatGroup, groupName);
 					}
 				});
@@ -125,7 +128,9 @@ mongoose
 					});
 
 					//deleteAfterSent(retData.product_id);
+					console.log(groupName);
 					if (groupName == 'GirlsFab') {
+						console.log('111...........');
 						var api = new telegram({
 							token: '6158204123:AAGoADPhxzS8wQGO8DeLWwZr6g8gpoQbSLo',
 							async_requests: true,
@@ -143,6 +148,7 @@ mongoose
 							deleteAfterSent(retData.product_id);
 						});
 					} else {
+						console.log('222...........');
 						deleteAfterSent(retData.product_id);
 					}
 				}
